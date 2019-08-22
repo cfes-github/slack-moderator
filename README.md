@@ -8,9 +8,12 @@ Since we dont want the bad actors to have the signals that we look for, we creat
 
 # Installing + Running
 
-## Bot
+### CFES Customized
+
 To run it when it is deployed on the server, simply run the run-moderator.sh script. To disable, run the kill-moderator.sh script. These scripts run the moderator on port 8000. A proxy forward is configured with apache2 so that /node requests on the server go to /slack/hook at port 8000.
 
+
+## Bot
 
 To install simply run:
 ```

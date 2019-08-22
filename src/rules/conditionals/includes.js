@@ -10,7 +10,7 @@ class IncludesConditional extends Conditional {
     }
 
     isMatched(message) {
-        const data = message[this.field];
+        const data = message[this.field].toLowerCase();
         return data && data.includes(this.value);
     }
 }

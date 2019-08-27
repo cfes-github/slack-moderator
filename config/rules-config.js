@@ -13,10 +13,10 @@ exports.default = {
             type: "delete-message",
             user: "admin-user"
         },
-        "notify-admin-channel": {
+        "notify-admin-channel-no-intervene": {
             type: "notify",
             channel: "admins",
-            message: "User <@{user}> wrote an illegal message on channel <#${channel}>. It was deleted.",
+            message: "User <@{user}> wrote a concerning message in <#${channel}>. No action was taken.",
             user: "admin-bot-user"
         },
         "warn-user-use-thread": {
@@ -26,20 +26,20 @@ exports.default = {
         }
     },
     rules: {
-        "remove-text-potato": {
-            "description": "Removes the message if a user writes 'potato'",
+        "remove-bad-text": {
+            "description": "Removes the message if an inappropriate word is used'",
             if: {
-                type: "and",
+                type: "or",
                 rules: [
                     {
-                        field: "type",
-                        type: "equal",
-                        value: "message"
+                        field: "text",
+                        type: "tokens-in",
+                        list: "en-bad-words"
                     },
                     {
                         field: "text",
-                        type: "token-equals",
-                        value: "potato"
+                        type: "tokens-in",
+                        list: "fr-bad-words"
                     },
                 ]
             },
@@ -66,6 +66,23 @@ exports.default = {
             },
             actions: [
                 "warn-user-use-thread"
+            ]
+        },
+
+        "warn-admins": {
+            "description": "Warns an admin when an action happens, but doesn't intervene.",
+            if: {
+                type: "or",
+                rules: [
+                    {
+                        field: "text",
+                        type: "includes",
+                        value: "fuck cfes"
+                    }
+                ]
+            },
+            actions: [
+                "notify-admin-channel-no-intervene"
             ]
         }
     }

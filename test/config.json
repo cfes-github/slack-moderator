@@ -1,6 +1,0 @@
-{
-    "reporterEnabled": "dot,mocha-junit-reporter",
-    "mochaJunitReporterReporterOptions": {
-        "mochaFile": "../dist/test-results/moderator/test-results.xml"
-    }
-}

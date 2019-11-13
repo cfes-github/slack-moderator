@@ -1,14 +1,11 @@
-import {Conditional} from "./conditional";
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.Conditional = exports.Type = void 0;var _conditional = require("./conditional");
 
-const TYPE = "disabled";
+const TYPE = "disabled";exports.Type = TYPE;
 
-class DisabledConditional extends Conditional {
-    parse() {
-        //ignore
-    }
-    isMatched() {
-        return false;
-    }
-}
-
-export {TYPE as Type, DisabledConditional as Conditional};
+class DisabledConditional extends _conditional.Conditional {
+  parse() {
+    //ignore
+  }
+  isMatched() {
+    return false;
+  }}exports.Conditional = DisabledConditional;

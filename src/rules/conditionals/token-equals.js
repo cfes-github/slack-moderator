@@ -1,19 +1,16 @@
-import {Conditional} from "./conditional";
-import {cachedTokenize, tokenize} from "../../tokenizer";
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.Conditional = exports.Type = void 0;var _conditional = require("./conditional");
+var _tokenizer = require("../../tokenizer");
 
-const TYPE = "token-equals";
+const TYPE = "token-equals";exports.Type = TYPE;
 
-class TokenEqualConditional extends Conditional {
+class TokenEqualConditional extends _conditional.Conditional {
 
-    parse(rules) {
-        this.value = tokenize(rules.value.toLowerCase()).join(" ");
-        this.field = rules.field;
-    }
+  parse(rules) {
+    this.value = (0, _tokenizer.tokenize)(rules.value.toLowerCase()).join(" ");
+    this.field = rules.field;
+  }
 
-    isMatched(message) {
-        const tokens = cachedTokenize(message, this.field);
-        return tokens && tokens.some(token => token == this.value);
-    }
-}
-
-export {TYPE as Type, TokenEqualConditional as Conditional};
+  isMatched(message) {
+    const tokens = (0, _tokenizer.cachedTokenize)(message, this.field);
+    return tokens && tokens.some(token => token == this.value);
+  }}exports.Conditional = TokenEqualConditional;

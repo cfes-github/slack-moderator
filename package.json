@@ -1,36 +1,45 @@
 {
-  "name": "slack-moderator",
-  "version": "0.4.1",
-  "main": "app.js",
-  "bin": "app.js",
-  "scripts": {
-    "ngrok": "ngrok http 3000",
-    "start": "npm-run-all --parallel lint:watch server:watch",
-    "server": "./bin/run.sh",
-    "server:watch": "nodemon --quiet --watch . --exec npm run server",
-    "test": "mocha --require @babel/register --reporter mocha-multi-reporters --reporter-options configFile=test/config.json --recursive",
-    "test:watch": "npm run test -- --watch --watch-extensions 'js'",
-    "lint": "esw src",
-    "lint:watch": "npm run lint -- --watch",
-    "clean": "rm -rf ./dist",
-    "current-version": "node -e 'console.log(process.env.npm_package_version + (process.env.BUILD_VERSION ? `.${process.env.BUILD_VERSION}` : ``))'",
-    "next-build-version": "node -e 'var split = process.env.npm_package_version.split(\".\"); console.log(`${split[0]}.${split[1]}.${parseInt(split[2]) + 1}`)'",
-    "next-minor-version": "node -e 'var split = process.env.npm_package_version.split(\".\"); console.log(`${split[0]}.${parseInt(split[1]) + 1}.0`)'",
-    "next-major-version": "node -e 'var split = process.env.npm_package_version.split(\".\"); console.log(`${parseInt(split[0]) + 1}.0.0`)'",
-    "build-version-commit": "npm version `npm run --silent next-build-version` --force -a",
-    "minor-version-commit": "npm version `npm run --silent next-minor-version` --force -a",
-    "major-version-commit": "npm version `npm run --silent next-major-version` --force -a",
-    "prebuild": "npm run clean && npm-run-all --parallel test lint",
-    "build": "npm-run-all build:src build:app build:copy-package build:copy-files build:package build:rules:resources",
-    "build:src": "babel src -d ./dist/package/src",
-    "build:app": "babel app.js -d ./dist/package/",
-    "build:package": "babel-node ./tools/create-package.js",
-    "build:copy-package": "cp package-lock.json ./dist/package/",
-    "build:copy-files": "cp README.md LICENSE.md ./dist/package/",
-    "build:prod:config": "babel config/production.js -d ./dist/package/config",
-    "build:dev:config": "babel config/development.js -d ./dist/package/config",
-    "build:rules:config": "babel config/rules.js -d ./dist/package/config",
-    "build:rules:resources": "babel resources -d ./dist/package/resources"
+  "_args": [
+    [
+      "slack-moderator",
+      ""
+    ]
+  ],
+  "_from": "slack-moderator@latest",
+  "_hasShrinkwrap": false,
+  "_id": "slack-moderator@0.4.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/slack-moderator",
+  "_nodeVersion": "7.10.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/slack-moderator_0.4.1_1553118809333_0.24848776746591006"
+  },
+  "_npmUser": {
+    "email": "vshlos@gmail.com",
+    "name": "vshlos"
+  },
+  "_npmVersion": "4.2.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "slack-moderator",
+    "raw": "slack-moderator",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/slack-moderator/-/slack-moderator-0.4.1.tgz",
+  "_shasum": "be34e4f1c673325d0a1ffe5f633a702cf39dc7ec",
+  "_shrinkwrap": null,
+  "_spec": "slack-moderator",
+  "_where": "",
+  "bin": {
+    "slack-moderator": "app.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -44,23 +53,27 @@
     "request-promise": "^4.2.2",
     "yargs": "^12.0.5"
   },
-  "devDependencies": {
-    "eslint": "^4.16.0",
-    "ngrok": "^3.1.1",
-    "nodemon": "^1.18.9",
-    "npm-run-all": "^4.1.5",
-    "@babel/cli": "^7.0.0-beta.38",
-    "@babel/core": "^7.0.0-beta.38",
-    "@babel/node": "^7.0.0-beta.38",
-    "@babel/polyfill": "^7.0.0-beta.38",
-    "@babel/preset-env": "^7.0.0-beta.38",
-    "@babel/register": "^7.0.0-beta.38",
-    "babel-eslint": "^8.2.1",
-    "eslint-watch": "^3.1.3",
-    "expect": "^21.2.1",
-    "mocha": "^5.0.0",
-    "mocha-junit-reporter": "^1.16.0",
-    "mocha-multi-reporters": "^1.1.7",
-    "rimraf": "^2.6.2"
-  }
+  "description": "As Slack is taking over for IRC as the community default platform, and because Slack isn't really designed as a community app, we need some basic moderation features. This project is to help create basic moderation rules to help control bad actors, and st",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "fileCount": 28,
+    "integrity": "sha512-lSWEKKbrEr36kOgLjxq4fbbnuVh8lZz3yzxzfJ85XBhGV23DSouSc/V4hTe0n8j1TZmjyngeicAQTqO4gfi3XA==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJckrZaCRA9TVsSAnZWagAANisP/RdonbefVotm16ijXoDv\n9igG18naI3nXaCSv3dfKDASR8M93rwa4av1Vt+9i3LsFV1nqpaato9gSOdco\n1wrOm8N2GoDjgFvWcX7OG4hZyoC555Zn+Rm1GLMxAMmExHRMoV3JhZ2lBRTB\n9nN0SS2ufZ3oS15JJwNXFVMB1X0UwfXg2Jq+7VuoMLWmm9+PhIsPRZ6sAl2B\ny7OT0YpICq/RQEqDU6gx4gAfxEG/xrKKX1SI4QWlOizmX07ZIkc3uXeSsNw9\nSRssvnxVJTgx1lr/YskicBXs7FixcbrJLEqP6J1UR3B0Qx12bcxQ4a3K/G+r\nJHKmer3icYsrGR/svXuWF88yrllQOeoX7Tf0kkb0B2hNFrvRKOk4k1f8WaHv\nTIDWHwv5B9pIv83Q+jgEsn2GxuEEZHOrQd1zYVeV3pS1nWkmMWlHozUonzPz\njdE1wP560hoSPoKAi3C4FIPfj00cgBnm+5yaBsS5zW5LIY7qnIIpc0624beO\nB058FeapA+YZmalrzAgd+/pbyoWck224sG3EwMx76OdHy+GfSpZbqDoj8UAa\n/F9UjEGnpY9WEPEikerW6Ugdfsf5P/El7o4r1dbakaPCT2zekf6+bwC897b9\nxOLnwE3AZJJ31Irzv84C0n0coNvF9sictIs11HBy0PsetWp2M4jF57ATjyuM\nPK3c\r\n=fm1E\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "be34e4f1c673325d0a1ffe5f633a702cf39dc7ec",
+    "tarball": "https://registry.npmjs.org/slack-moderator/-/slack-moderator-0.4.1.tgz",
+    "unpackedSize": 298288
+  },
+  "main": "app.js",
+  "maintainers": [
+    {
+      "name": "vshlos",
+      "email": "vshlos@gmail.com"
+    }
+  ],
+  "name": "slack-moderator",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "scripts": {},
+  "version": "0.4.1"
 }

@@ -39,3 +39,4 @@ config/rules.js
 config/development.js
 config/development-rules.js
 config/prod-rules.js
+*-config.js
